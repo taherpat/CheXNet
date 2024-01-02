@@ -42,18 +42,18 @@ def main():
         new_state_dict = OrderedDict()
         
         for k, v in state_dict.items():
-        if 'module' not in k:
-          k = 'module.'+k
-        else:
-          k = k.replace( 'module.densenet121.features', 'features')
-          k = k.replace( 'module.densenet121.classifier', 'classifier')
-          k = k.replace( '.norm.1', '.norm1')
-          k = k.replace( '.conv.1', '.conv1')
-          k = k.replace( '.norm.2', '.norm2')
-          k = k.replace( '.conv.2', '.conv2')
-          new_state_dict[k]=v
-          
-          model.load_state_dict(new_state_dict)
+          if 'module' not in k:
+            k = 'module.'+k
+          else:
+            k = k.replace( 'module.densenet121.features', 'features')
+            k = k.replace( 'module.densenet121.classifier', 'classifier')
+            k = k.replace( '.norm.1', '.norm1')
+            k = k.replace( '.conv.1', '.conv1')
+            k = k.replace( '.norm.2', '.norm2')
+            k = k.replace( '.conv.2', '.conv2')
+            new_state_dict[k]=v
+            
+            model.load_state_dict(new_state_dict)
         print("=> loaded checkpoint")
     else:
         print("=> no checkpoint found")
