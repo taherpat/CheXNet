@@ -37,7 +37,8 @@ def main():
     if os.path.isfile(CKPT_PATH):
         print("=> loading checkpoint")
         checkpoint = torch.load(CKPT_PATH)
-        model.load_state_dict(checkpoint['state_dict'])
+        # model.load_state_dict(checkpoint['state_dict'])
+        state_dict = checkpoint['state_dict']
         from collections import OrderedDict
         new_state_dict = OrderedDict()
         
